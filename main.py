@@ -2,6 +2,8 @@
 # 主程序｜纯净浅色版 无多余居中代码
 import streamlit as st
 import base64
+import os
+
 from game_text import *
 from game_style import *
 
@@ -96,8 +98,13 @@ def get_image_base64(path):
     with open(path, "rb") as image_file:
         encoded = base64.b64encode(image_file.read()).decode()
     return f"data:image/jpeg;base64,{encoded}"
-teacher_img = get_image_base64(r"V:\lover\images\teacher.jpg")
-student_img = get_image_base64(r"V:\lover\images\student.jpg")
+# 获取当前脚本所在文件夹的路径
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# 传入新的路径
+teacher_img = get_image_base64(os.path.join(current_dir, "teacher.jpg"))
+student_img = get_image_base64(os.path.join(current_dir, "student.jpg"))
+
+
 # 张居正生平传记页面
 def page_bio():
     custom_title("📜 张居正生平与他的选择")
