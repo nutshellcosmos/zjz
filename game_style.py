@@ -1,31 +1,34 @@
 # -*- coding: utf-8 -*-
-# UI美化文件｜【纯浅色模式、删除全部深色冗余代码】
+# UI美化文件
 import streamlit as st
 
 # 页面基础配置
 PAGE_TITLE = "万古松风｜张居正"
 PAGE_LAYOUT = "wide"
 
-# 全局古风CSS（✅修复所有语法错误，标题大小强制生效）
+# 全局古风CSS
 CSS_STYLE = """
 <style>
-/* 全局背景 */
-.main {
-    background-color: #f8f2e4;
+
+
+/* 【关键点】强制容器支持滚动，否则 JS 的 scrollTo 会失效 */
+[data-testid="stAppViewContainer"] {
+    height: 100vh;
+    overflow-y: auto !important;
 }
 
-/* 全局字体：修复语法错误 */
+/* 全局字体 */
 html, body, .stMarkdown p {
     font-family: 楷体 !important;
     font-size: 18px !important;
 }
 
-/* 👇 这里就是你要改的标题大小！！！ */
+/* 标题大小设置 */
 h1, h2, h3 {
     color: #5c1010 !important;
     font-family: 楷体 !important;
     font-weight: bold !important;
-    font-size: 24px !important;  /* 想变小就改这个数字：24 → 22 → 20 → 18 */
+    font-size: 24px !important;
 }
 
 /* 自定义分割线 */
@@ -58,25 +61,19 @@ hr {
 [data-testid="stSidebar"] {
     background-color: #ebe3d5;
 }
-[data-testid="stSidebar"] hr {
-    display: none;
-}
 </style>
 """
 
-# 通用黄框（纯浅色原版样式）
+# 通用黄框
 STORY_BOX = """
-<p style="background:#fff6e8;padding:30px 40px;border-radius:12px;font-size:18px;line-height:2.2;text-indent:2em;text-align:justify;margin-top:15px;margin-bottom:15px;border:1px solid #e9dfcd;box-shadow:0 2px 8px #e2d6c0;color:#120b04;">{}</p>
+<p style="background:#fff6e8;padding:15px 20px;border-radius:12px;font-size:18px;line-height:2.2;text-indent:2em;text-align:justify;margin-top:5px;margin-bottom:15px;border:1px solid #e9dfcd;box-shadow:0 2px 8px #e2d6c0;color:#120b04;">{}</p>
 """
 
-# 侧边栏文字
 SIDEBAR_TITLE = "📜 张居正极简面板"
 SIDEBAR_WARN = "🐢 愿以深心奉尘刹，不予自身求利益。"
 
-# 进度条（满分100、修复负数BUG：负数强制归0）
 def get_bar_html(name,color,num,max_num=100):
-    if num < 0:
-        num = 0
+    if num < 0: num = 0
     percent = min(num/max_num*100,100)
     html = f"""
 <p style="margin:4px 0px;font-size:15px;color:#4b2b1b;">{name}：{num}/{max_num}</p>
@@ -86,7 +83,6 @@ def get_bar_html(name,color,num,max_num=100):
 """
     return html
 
-# 结局专属背景色
 ENDING_SUCCESS = "background:#f9f1d9;border:1px solid #e2c894;"
 ENDING_FAIL = "background:#4b1c1c;border:1px solid #7a2e2e;color:#f8e8e8;"
 ENDING_NORMAL = "background:#f0ebe1;border:1px solid #d3c7b4;"
