@@ -44,7 +44,8 @@ def show_side():
     side.markdown(get_bar_html("👑 皇权好感","#a82020",st.session_state.status["皇权"]),unsafe_allow_html=True)
     side.markdown(get_bar_html("🧠 治世谋略","#3c5480",st.session_state.status["谋略"]),unsafe_allow_html=True)
     side.markdown(get_bar_html("❤️ 家国赤诚","#c72c41",st.session_state.status["赤诚"]),unsafe_allow_html=True)
-    side.divider()
+    #side.divider()
+    side.markdown('<p style="margin: 15px 0;"></p>', unsafe_allow_html=True)
     side.error(SIDEBAR_WARN)
     if side.button("🔄 重开一局"):
         st.session_state.clear()
