@@ -142,21 +142,27 @@ def page_end():
     s = st.session_state.status
     ml, hq, cc, sw = s["谋略"], s["皇权"], s["赤诚"], s["声望"]
     t, desc, hidden_t, hidden_desc = get_ending(sw, hq, ml, cc)
+    
+    # 定义一套模拟 st.success 的 HTML 样式
+    success_style = "background-color: #d4edda; color: #155724; padding: 10px 20px; border-radius: 0.5rem; border: 1px solid #c3e6cb; margin-bottom: 10px;"
+    error_style = "background-color: #f8d7da; color: #721c24; padding: 10px 20px; border-radius: 0.5rem; border: 1px solid #f5c6cb; margin-bottom: 10px;"
+    info_style = "background-color: #e2e3e5; color: #383d41; padding: 10px 20px; border-radius: 0.5rem; border: 1px solid #d6d8db; margin-bottom: 10px;"
+    
     if st.session_state.hidden_ending:
-        st.success(f"### {hidden_t}")
+        st.markdown(f'<div style="{success_style}"><h3>{hidden_t}</h3></div>', unsafe_allow_html=True)
         bg = ENDING_SUCCESS
-        end_box = f'<p style="{bg}padding:30px 40px;border-radius:12px;font-size:18px;line-height:2.2;text-indent:2em;text-align:justify;margin-top:15px;margin-bottom:35px;">{hidden_desc}</p>'
+        end_box = f'<p style="{bg}padding:30px;border-radius:12px;font-size:18px;line-height:2.2;text-indent:2em;text-align:justify;margin-top:15px;margin-bottom:35px;">{hidden_desc}</p>'
     else:
         if "完美" in t:
-            st.success(f"### {t}")
+            st.markdown(f'<div style="{success_style}"><h3>{t}</h3></div>', unsafe_allow_html=True)
             bg = ENDING_SUCCESS
         elif "悲剧" in t:
-            st.error(f"### {t}")
+            st.markdown(f'<div style="{error_style}"><h3>{t}</h3></div>', unsafe_allow_html=True)
             bg = ENDING_FAIL
         else:
-            st.info(f"### {t}")
+            st.markdown(f'<div style="{info_style}"><h3>{t}</h3></div>', unsafe_allow_html=True)
             bg = ENDING_NORMAL
-        end_box = f'<p style="{bg}padding:30px 40px;border-radius:12px;font-size:18px;line-height:2.2;text-indent:2em;text-align:justify;margin-top:15px;margin-bottom:35px;">{desc}</p>'
+        end_box = f'<p style="{bg}padding:30px;border-radius:12px;font-size:18px;line-height:2.2;text-indent:2em;text-align:justify;margin-top:15px;margin-bottom:35px;">{desc}</p>'
     st.markdown(end_box,unsafe_allow_html=True)
     st.markdown("**📊 最终属性评定**")
     st.markdown(get_bar_html("🏛️ 朝野声望","#b89768",sw),unsafe_allow_html=True)
