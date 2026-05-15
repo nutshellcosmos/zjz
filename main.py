@@ -120,16 +120,16 @@ def page_bio():
     st.markdown(JUZENG_SIX_CHOICES, unsafe_allow_html=True)
     st.markdown(f"""
     <div style="display:flex; align-items:flex-start; margin-top:30px; margin-bottom:30px;">
-        <img src="{teacher_img}" style="width:80px; height:80px; flex-shrink:0; border-radius:50%; object-fit:cover;">
-        <div style="margin-left:20px; background:#fff6e8; padding:15px 22px; border-radius:12px; border:1px solid #e9dfcd; font-size:17px; color:#5c1010;">
+        <img src="{teacher_img}" style="width:40px; height:40px; flex-shrink:0; border-radius:50%; object-fit:cover;">
+        <div style="margin-left:20px; background:#fff6e8; padding:10px; border-radius:12px; border:1px solid #e9dfcd; font-size:17px; color:#5c1010;">
             少年，愿你能懂我这一生的坚守与无奈……
         </div>
     </div>
     <div style="display:flex; align-items:flex-start; margin-bottom:30px; justify-content:flex-end;">
-        <div style="margin-right:20px; background:#f0ebe1; padding:15px 22px; border-radius:12px; border:1px solid #d3c7b4; font-size:17px; color:#5c1010;">
+        <div style="margin-right:20px; background:#f0ebe1; padding:12px; border-radius:12px; border:1px solid #d3c7b4; font-size:17px; color:#5c1010;">
             先生，我是从郦波老师的讲座《风雨张居正》中认识您的，那时我方认识四百多年前的一个孤独灵魂，我忍不住哭泣、忍不住泪流满面。为您“知我罪我，其惟春秋”的凛然，为您倾注一切心血给万历和新政却终究付诸东流而愤恨，为您孤身一人踽踽独行而心痛而心酸。先生，您万古松风，我辈谨记！
         </div>
-        <img src="{student_img}" style="width:70px; height:70px; flex-shrink:0; border-radius:50%; object-fit:cover;">
+        <img src="{student_img}" style="width:40px; height:40px; flex-shrink:0; border-radius:50%; object-fit:cover;">
     </div>""", unsafe_allow_html=True)
     st.markdown("<div style='margin-top:30px'></div>", unsafe_allow_html=True)
     if st.button("🔙 返回结局页面"):
@@ -145,7 +145,7 @@ def page_end():
     if st.session_state.hidden_ending:
         st.success(f"### {hidden_t}")
         bg = ENDING_SUCCESS
-        end_box = f'<p style="{bg}padding:30px 40px;border-radius:12px;font-size:18px;line-height:2.2;text-indent:2em;text-align:justify;margin-top:15px;margin-bottom:15px;">{hidden_desc}</p>'
+        end_box = f'<p style="{bg}padding:30px 40px;border-radius:12px;font-size:18px;line-height:2.2;text-indent:2em;text-align:justify;margin-top:15px;margin-bottom:35px;">{hidden_desc}</p>'
     else:
         if "完美" in t:
             st.success(f"### {t}")
@@ -156,7 +156,7 @@ def page_end():
         else:
             st.info(f"### {t}")
             bg = ENDING_NORMAL
-        end_box = f'<p style="{bg}padding:30px 40px;border-radius:12px;font-size:18px;line-height:2.2;text-indent:2em;text-align:justify;margin-top:15px;margin-bottom:15px;">{desc}</p>'
+        end_box = f'<p style="{bg}padding:30px 40px;border-radius:12px;font-size:18px;line-height:2.2;text-indent:2em;text-align:justify;margin-top:15px;margin-bottom:35px;">{desc}</p>'
     st.markdown(end_box,unsafe_allow_html=True)
     st.markdown("**📊 最终属性评定**")
     st.markdown(get_bar_html("🏛️ 朝野声望","#b89768",sw),unsafe_allow_html=True)
