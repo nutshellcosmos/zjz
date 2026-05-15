@@ -66,7 +66,7 @@ hr {
 
 # 通用黄框
 STORY_BOX = """
-<p style="background:#fff6e8;padding:15px 20px;border-radius:12px;font-size:18px;line-height:2.2;text-indent:2em;text-align:justify;margin-top:0px;margin-bottom:20px;border:1px solid #e9dfcd;box-shadow:0 2px 8px #e2d6c0;color:#120b04;">{}</p>
+<p style="background:#fff6e8;padding:15px 20px;border-radius:12px;font-size:18px;line-height:2.2;text-indent:2em;text-align:justify;margin-top:-15px;margin-bottom:35px;border:1px solid #e9dfcd;box-shadow:0 2px 8px #e2d6c0;color:#120b04;">{}</p>
 """
 
 SIDEBAR_TITLE = "📜 张居正极简面板"
